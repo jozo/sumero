@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sumero s.r.o.</title>
+  <meta name="description" content="Sumero s.r.o. — Bratislava, Slovakia. Contact: hi@sumero.eu">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%232F5D62'/><text x='16' y='23' font-family='Arial' font-weight='700' font-size='19' fill='white' text-anchor='middle'>S</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=Karla:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --page: #DDE3E1;
+      --card: #FBFCFB;
+      --ink: #1C2826;
+      --muted: #5E6B68;
+      --accent: #2F5D62;
+      --line: #D3DAD8;
+      --shadow: 0 1px 2px rgba(28, 40, 38, .08), 0 18px 40px -12px rgba(28, 40, 38, .22);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --page: #141B1A;
+        --card: #1F2927;
+        --ink: #E8EEEC;
+        --muted: #9AA8A5;
+        --accent: #7FB3B8;
+        --line: #33403D;
+        --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 18px 40px -12px rgba(0, 0, 0, .6);
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; }
+
+    body {
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background: var(--page);
+      color: var(--ink);
+      font-family: "Karla", "Helvetica Neue", Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .card {
+      position: relative;
+      width: min(100%, 580px);
+      aspect-ratio: 85 / 55;           /* standard business card proportions */
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      padding: 40px 44px 40px 56px;
+      background: var(--card);
+      border-radius: 6px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      animation: settle .7s cubic-bezier(.2, .8, .2, 1) both;
+    }
+    /* coloured edge, like a printed card's edge stripe */
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 10px;
+      background: var(--accent);
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .name {
+      font-family: "Syne", "Arial Black", sans-serif;
+      font-weight: 700;
+      font-size: clamp(2.25rem, 7vw, 2.9rem);
+      line-height: .95;
+      letter-spacing: -0.03em;
+    }
+    .name small {
+      display: block;
+      margin-top: 8px;
+      font-size: .38em;
+      font-weight: 600;
+      letter-spacing: 0;
+      color: var(--accent);
+    }
+    .person p { color: var(--muted); font-size: .875rem; }
+    .person strong { display: block; font-weight: 500; font-size: 1.0625rem; }
+
+    .contact {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 14px;
+      padding-left: 28px;
+      border-left: 1px solid var(--line);
+      font-size: .9375rem;
+    }
+    .contact span { display: block; color: var(--muted); font-size: .8125rem; }
+
+    a {
+      color: var(--ink);
+      text-decoration: underline;
+      text-decoration-color: var(--line);
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1.5px;
+      transition: text-decoration-color .2s;
+    }
+    a:hover { text-decoration-color: var(--accent); }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+    address { font-style: normal; }
+
+    @keyframes settle {
+      from { opacity: 0; transform: translateY(14px) rotate(-1.5deg); }
+      to   { opacity: 1; transform: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .card { animation: none; }
+    }
+
+    @media (max-width: 560px) {
+      .card {
+        aspect-ratio: auto;
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding: 36px 28px 32px 40px;
+      }
+      .brand { gap: 28px; }
+      .contact { padding-left: 0; padding-top: 24px; border-left: 0; border-top: 1px solid var(--line); }
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="brand">
+      <h1 class="name">Sumero<small>s.r.o.</small></h1>
+      <div class="person">
+        <strong>Jozef Gáborík</strong>
+        <p>Founder · <a href="https://www.linkedin.com/in/jozo/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+      </div>
+    </div>
+
+    <div class="contact">
+      <div>
+        <span>Email</span>
+        <a href="mailto:hi@sumero.eu">hi@sumero.eu</a>
+      </div>
+      <div>
+        <span>Address</span>
+        <address>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=Z%C3%A1hradn%C3%ADcka+4839%2F65%2C+821+08+Bratislava" target="_blank" rel="noopener noreferrer">Záhradnícka 4839/65<br>821 08 Bratislava</a>
+        </address>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
